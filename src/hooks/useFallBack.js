@@ -9,7 +9,7 @@ export const useFallBack = (videoRef) => {
         videoElement.currentTime = time;
       }
     }
-  }, []);
+  }, [videoRef]);
 
   useEffect(() => {
     function onReloadStoreTime() {
