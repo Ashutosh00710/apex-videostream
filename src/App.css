@@ -1,38 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  margin: 40px auto;
+  max-width: 650px;
+  line-height: 1.6;
+  font-size: 18px;
+  font-family: "Roboto", sans-serif;
+  color: #444;
+  padding: 0 10px;
+  background-image: url("./assets/background.png");
+  background-size: cover;
+}
+h2 {
+  line-height: 1.2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/*
+media querie for mobile
+*/
+@media (max-width: 600px) {
+  body {
+    margin: 40px auto;
+    line-height: 1.6;
+    font-size: 12px;
+    font-family: "Roboto", sans-serif;
+    color: #444;
+    padding: 0 5px;
+    background-image: url("./assets/apex_mobile.jpg");
+    background-size: cover;
+  }
+
+  .video {
+    width: 100%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.heading {
+  font-weight: bolder;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.video {
+  margin: 2rem 0;
 }

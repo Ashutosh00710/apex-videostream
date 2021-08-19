@@ -1,23 +1,72 @@
-import logo from './logo.svg';
-import './App.css';
+import { useRef } from "react";
+import { useKeyDown } from "./hooks/useKeyDown";
+import { useFallBack } from "./hooks/useFallBack";
+import Logo from "./assets/Apex.png";
+import "./App.css";
 
 function App() {
+  const video = useRef(null);
+
+  useFallBack(video);
+
+  useKeyDown("Space", () => {
+    const videoElement = video.current;
+
+    if (!videoElement.ended) {
+      let isPlaying =
+        videoElement.currentTime > 0 &&
+        !videoElement.paused &&
+        !videoElement.ended &&
+        videoElement.readyState > videoElement.HAVE_CURRENT_DATA;
+
+      if (!isPlaying) {
+        videoElement.play();
+      } else {
+        videoElement.pause();
+      }
+    } else {
+      videoElement.load();
+    }
+  });
+
+  useKeyDown("ArrowRight", () => {
+    const videoElement = video.current;
+    videoElement.currentTime += 5;
+    if (videoElement.currentTime > videoElement.duration) {
+      videoElement.load();
+      videoElement.pause();
+    }
+  });
+
+  useKeyDown("ArrowLeft", () => {
+    const videoElement = video.current;
+    videoElement.currentTime -= 5;
+    if (videoElement.currentTime < 0) {
+      videoElement.load();
+      videoElement.pause();
+    }
+  });
+
+  useKeyDown("ArrowUp", () => {
+    const videoElement = video.current;
+    if (videoElement.volume !== 1) {
+      videoElement.volume += 0.1;
+    }
+  });
+
+  useKeyDown("ArrowDown", () => {
+    const videoElement = video.current;
+    if (videoElement.volume !== 0) {
+      videoElement.volume -= 0.1;
+    }
+  });
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={Logo} alt="logo" width="20%" />
+      <video className="video" width="650" controls autoPlay ref={video}>
+        <source src="http://localhost:5000/stream/Apex" type="video/mp4" />
+      </video>
     </div>
   );
 }
