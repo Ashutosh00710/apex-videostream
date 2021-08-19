@@ -65,7 +65,10 @@ function App() {
     <div className="App">
       <img src={Logo} alt="logo" width="20%" />
       <video className="video" width="650" controls autoPlay ref={video}>
-        <source src="http://localhost:5000/stream/Apex" type="video/mp4" />
+        <source
+          src="https://video-stream-back.herokuapp.com/stream/Apex"
+          type="video/mp4"
+        />
       </video>
     </div>
   );
