@@ -9,6 +9,7 @@ function App() {
 
   useFallBack(video);
 
+  // Listen for "SPACE" key
   useKeyDown("Space", () => {
     const videoElement = video.current;
 
@@ -29,6 +30,7 @@ function App() {
     }
   });
 
+  // Listen for "RIGHT ARROW" key
   useKeyDown("ArrowRight", () => {
     const videoElement = video.current;
     videoElement.currentTime += 5;
@@ -38,6 +40,7 @@ function App() {
     }
   });
 
+  // Listen for "LEFT ARROW" key
   useKeyDown("ArrowLeft", () => {
     const videoElement = video.current;
     videoElement.currentTime -= 5;
@@ -47,6 +50,7 @@ function App() {
     }
   });
 
+  // Listen for "UP ARROW" key
   useKeyDown("ArrowUp", () => {
     const videoElement = video.current;
     if (videoElement.volume !== 1) {
@@ -54,6 +58,7 @@ function App() {
     }
   });
 
+  // Listen for "DOWN ARROW" key
   useKeyDown("ArrowDown", () => {
     const videoElement = video.current;
     if (videoElement.volume !== 0) {

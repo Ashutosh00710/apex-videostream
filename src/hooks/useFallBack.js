@@ -1,5 +1,10 @@
 import { useEffect } from "react";
 
+/**
+ * Use this hook to set a fallback for the video stream.
+ *
+ * @param {any} videoRef - The fallback video stream.
+ */
 export const useFallBack = (videoRef) => {
   useEffect(() => {
     const videoElement = videoRef.current;
